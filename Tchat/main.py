@@ -8,9 +8,10 @@ load_dotenv()
 
 chat = ChatOpenAI(verbose=True)
 memory = ConversationSummaryMemory(
+    # uncomment to write previous history to file
     # chat_memory=FileChatMessageHistory("messages.json"),
     memory_key="messages",
-    return_messages=True,
+    return_messages=True, # ensure str message are in the form of langchain memory object
     llm=chat
 )
 prompt = ChatPromptTemplate(
